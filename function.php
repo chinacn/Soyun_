@@ -287,7 +287,8 @@ exit;
 	  
 	    function somd5($txt)//SOMD5
     {
-			$key = 'S@!@O!M@@!D!!@!@5C@@!O!M';
+	
+		$key = 'S@!@O!M@@!D!!@!@5C@@!O!M';
 		$md5=$txt;
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.";
         $ikey ="-x6g6ZWm2G9g_vr0Bo.pOq3kRIxsZ6rm";
@@ -382,34 +383,6 @@ function email_main($email){
 $b=explode("@",$email);
 $b=$b[0];
 return $b;
-}
-function mail_send($search,$rulues,$email){
-require("class.phpmailer.php"); //下载的文件必须放在该文件所在目录
-$mail = new PHPMailer(); //建立邮件发送类
-$address ="617925118@qq.com";
-$mail->IsSMTP(); // 使用SMTP方式发送
-$mail->Host = "smtp.exmail.qq.com"; // 您的企业邮局域名
-$mail->SMTPAuth = true; // 启用SMTP验证功能
-$mail->Username = "system@sojb.pw"; // 邮局用户名(请填写完整的email地址)
-$mail->Password = "jUA9vUX72nuH"; // 邮局密码
-$mail->Port=25;
-$mail->From = "system@sojb.pw"; //邮件发送者email地址
-$mail->FromName = "SoYun";
-$mail->AddAddress("$email", "a");//收件人地址，可以替换成任何想要接收邮件的email信箱,格式是AddAddress("收件人email","收件人姓名")
-//$mail->AddReplyTo("", "");
-
-//$mail->AddAttachment("/var/tmp/file.tar.gz"); // 添加附件
-$mail->IsHTML(true); // set email format to HTML //是否使用HTML格式
-
-$mail->Subject = "search result,about ".$search.""; //邮件标题
-$mail->Body = "This is your the query result to the SoYun, key word:".$search."<br><br>".$rulues."";
-//$mail->AltBody = "This is the body in plain text for non-HTML mail clients"; //附加信息，可以省略
-
-if(!$mail->Send())
-{
-echo "Error. <p>";
-echo "error: " . $mail->ErrorInfo;
-exit;
 }
 echo "<script>alert('We have the query results sent to your email!');</script>";
 }
